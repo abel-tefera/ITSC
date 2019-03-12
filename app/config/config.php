@@ -5,6 +5,7 @@
   define('DB_NAME', 'itsc');
 
   define('APPROOT', dirname(dirname(__FILE__)));
+  define('MAINROOT', dirname(dirname(dirname(__FILE__))));
   define('URLROOT', 'http://localhost/itsc');
   define('SITENAME', 'ITSC');
   define('APPVERSION', '1.0.0');

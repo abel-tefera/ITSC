@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2019 at 04:09 AM
+-- Generation Time: Mar 12, 2019 at 01:12 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `Id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
@@ -39,8 +39,8 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`Id`, `Name`, `Email`, `password`) VALUES
-(1, 'Mr. Tsega', 'itscstaff@gmail.com', '$2y$10$XG2.Gbt5l2aoXJ1Ye.J4U.p7C1oMqvqKA.JyKaORm3f9flrjzdNEy');
+INSERT INTO `admins` (`id`, `Name`, `Email`, `password`) VALUES
+(1, 'itsc Stafff', 'itscstaff@gmail.com', '$2y$10$XG2.Gbt5l2aoXJ1Ye.J4U.p7C1oMqvqKA.JyKaORm3f9flrjzdNEy');
 
 -- --------------------------------------------------------
 
@@ -63,7 +63,7 @@ CREATE TABLE `attendance` (
 --
 
 CREATE TABLE `certificates` (
-  `Id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Vendor` varchar(255) NOT NULL,
   `Description` varchar(255) DEFAULT NULL
@@ -73,7 +73,7 @@ CREATE TABLE `certificates` (
 -- Dumping data for table `certificates`
 --
 
-INSERT INTO `certificates` (`Id`, `Name`, `Vendor`, `Description`) VALUES
+INSERT INTO `certificates` (`id`, `Name`, `Vendor`, `Description`) VALUES
 (1, 'Cisco Certified Entry Networking Technician (CCENT)', 'Cisco', 'Entry level networking certificate');
 
 -- --------------------------------------------------------
@@ -83,7 +83,7 @@ INSERT INTO `certificates` (`Id`, `Name`, `Vendor`, `Description`) VALUES
 --
 
 CREATE TABLE `courses` (
-  `Id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `Name` varchar(255) DEFAULT NULL,
   `Description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -92,9 +92,12 @@ CREATE TABLE `courses` (
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`Id`, `Name`, `Description`) VALUES
-(4, 'Object-Oriented Programming I', 'This is a beginner course for OOP in Java.'),
-(5, 'Software Engineering I', 'Software modelling and analysis');
+INSERT INTO `courses` (`id`, `Name`, `Description`) VALUES
+(5, 'Software Engineering I', 'Software modelling and analysis'),
+(9, 'Object-Oriented Programming I', 'This is a beginner course for OOP in Java.'),
+(10, 'Data Structures and Algorithms', 'Stacks, queues, linked lists...'),
+(11, 'Fundamentals of Networking', 'Entry level networking course'),
+(12, 'Data Science', 'Data science with R/Python');
 
 -- --------------------------------------------------------
 
@@ -128,7 +131,7 @@ CREATE TABLE `studentcourses` (
 --
 
 CREATE TABLE `students` (
-  `Id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -144,8 +147,9 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`Id`, `Name`, `Email`, `password`, `MobileTel`, `OfficeTel`, `Organization`, `JobTitle`, `POBox`, `image_directory`) VALUES
-(8, 'Abel Tefera', 'abeltefera16@gmail.com', '$2y$10$WBLgml9Vbp0OPCvlLolKmOvxGk4ge/o6oNNV/wtITKqIMqw4/Xol6', '923942000', '0', '', '', '', NULL);
+INSERT INTO `students` (`id`, `Name`, `Email`, `password`, `MobileTel`, `OfficeTel`, `Organization`, `JobTitle`, `POBox`, `image_directory`) VALUES
+(8, 'Abel T. Belay', 'abeltefera16@gmail.com', '$2y$10$WBLgml9Vbp0OPCvlLolKmOvxGk4ge/o6oNNV/wtITKqIMqw4/Xol6', '923942288', '', 'AAiT', 'Student', '', NULL),
+(10, 'New Stud', 'newstud@gmail.com', '$2y$10$OJ54ADTPhjMPF88lcpJRQ.FuvCsCqhkkRZkr7rq.Qu4e9uQNVvETu', '875', '', '', '', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -154,7 +158,7 @@ INSERT INTO `students` (`Id`, `Name`, `Email`, `password`, `MobileTel`, `OfficeT
 --
 
 CREATE TABLE `teachers` (
-  `Id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `Email` varchar(255) NOT NULL,
@@ -166,8 +170,8 @@ CREATE TABLE `teachers` (
 -- Dumping data for table `teachers`
 --
 
-INSERT INTO `teachers` (`Id`, `Name`, `password`, `Email`, `Certificates`, `image_directory`) VALUES
-(2, 'Dagmawi Nigussu', '$2y$10$49T4uc5VRjCqvykZ3hnwnOfGjVHbDDWFm2a/t7Jajd3lb0mMf8QTW', 'daginegussu@gmail.com', NULL, NULL);
+INSERT INTO `teachers` (`id`, `Name`, `password`, `Email`, `Certificates`, `image_directory`) VALUES
+(1, 'Molalegne', '$2y$10$CckHs5UtGJ7hO.Lqfo3TNeUF6eBwV0Vj2XfmziJa39JU0X0UfAHf2', 'molbill@gmail.com', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -177,7 +181,7 @@ INSERT INTO `teachers` (`Id`, `Name`, `password`, `Email`, `Certificates`, `imag
 -- Indexes for table `admins`
 --
 ALTER TABLE `admins`
-  ADD PRIMARY KEY (`Id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `attendance`
@@ -192,14 +196,14 @@ ALTER TABLE `attendance`
 -- Indexes for table `certificates`
 --
 ALTER TABLE `certificates`
-  ADD PRIMARY KEY (`Id`),
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `Name` (`Name`);
 
 --
 -- Indexes for table `courses`
 --
 ALTER TABLE `courses`
-  ADD PRIMARY KEY (`Id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `offeredcourse`
@@ -220,13 +224,13 @@ ALTER TABLE `studentcourses`
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
-  ADD PRIMARY KEY (`Id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `teachers`
 --
 ALTER TABLE `teachers`
-  ADD PRIMARY KEY (`Id`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `Teachers_fk0` (`Certificates`);
 
 --
@@ -237,7 +241,7 @@ ALTER TABLE `teachers`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `attendance`
@@ -249,13 +253,13 @@ ALTER TABLE `attendance`
 -- AUTO_INCREMENT for table `certificates`
 --
 ALTER TABLE `certificates`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `studentcourses`
@@ -267,13 +271,13 @@ ALTER TABLE `studentcourses`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

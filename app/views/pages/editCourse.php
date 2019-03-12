@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php';?>
 <a href="<?php echo URLROOT; ?>/pages/view_courses" class="btn btn-light"><i class="fa fa-backward"></i> Back</a>
   <div class="card card-body bg-light mt-5">
-  <h2>Edit Admin</h2>
+  <h2>Edit Course</h2>
     <p>Enter data with this form</p>
     <form action="<?php echo URLROOT; ?>/updates/editCourse/<?php echo $data['id']; ?>" method="post">
     <div class="form-group">

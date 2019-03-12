@@ -45,10 +45,11 @@ $countB = 0;?>
                         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                         <div class="btn-group mr-2" role="group" aria-label="First group">
                         <form action="<?php echo URLROOT; ?>/updates/edit<?php echo rtrim($data["header"], 's');?>/<?php echo $row['id'];?>" method="get">
-                            <input type="submit" class="btn btn-secondary" value="Edit">
+                            <button type="submit" class="btn btn-secondary">Edit</button>
                         </form>
+                        <span><pre> </pre></span>
                         <form action="<?php echo URLROOT; ?>/updates/delete<?php echo rtrim($data["header"], 's');?>/<?php echo $row['id'];?>" method="post">
-                            <input type="submit" class="btn btn-secondary" value="Delete" class="btn btn-danger">
+                          <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                           <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button> -->
                         </div>
