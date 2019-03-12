@@ -6,14 +6,14 @@
     <p class="lead"><?php echo $data['description']; ?></p>
     </div>
   </div>
-    <div class="card-group">
+    <div class="card-columns">
       <?php foreach ($data['rows'] as $result):?>
           <div class="card" style="margin: 25px;">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title"><?php echo $result['Name']?></h5>
               <p class="card-text"><?php echo $result['Description']?></p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              <p class="card-text"><small class="text-muted">Next start date: </small></p>
             </div>
           </div>
         <?php endforeach ?>
