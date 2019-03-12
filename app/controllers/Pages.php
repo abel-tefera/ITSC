@@ -42,6 +42,10 @@ class Pages extends Controller
 
                 if (empty($data['name'])) {
                     $data['name_err'] = 'Please enter name of the certificate';
+                }else {
+                    if ($this->Model->findCertificateByName($data['name'])) {
+                            $data['name_err'] = 'Name is already taken';
+                    }
                 }
 
                 if (empty($data['vendor'])) {
@@ -188,4 +192,11 @@ class Pages extends Controller
         ];
         $this->view('pages/tables', $data);
     }
+
+    // public function modalStudent(){
+    //     $result = $this->Model->fetch_admins();
+
+    // }
+
+
 }

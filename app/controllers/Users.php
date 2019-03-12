@@ -4,6 +4,7 @@ class Users extends Controller
     public function __construct()
     {
         $this->userModel = $this->model('User');
+        $this->contentModel = $this->model('Content');
     }
 
     public function registerStudent()
@@ -196,7 +197,6 @@ class Users extends Controller
     public function registerAdmin()
     {
         if (isset($_SESSION['user_id']) && $_SESSION['user_role'] == 'Admin') {
-
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $data = [
@@ -295,11 +295,8 @@ class Users extends Controller
                     $role = $this->userModel->findUserByEmail($data['email'])[1];
                 }
                 if (empty($data['email_err']) && empty($data['password_err'])) {
-                    // die("AHSGUIASHDUIAS");
                     $loggedInUser = $this->userModel->login($data['email'], $data['password'], $role);
-                    // die("SESSIONSUCCESSUPPPPPPPPPPPP");
                     if ($loggedInUser) {
-                        // die("SESSIONSUCCESS");
                         $this->createUserSession($loggedInUser, $role);
                     } else {
                         $data['password_err'] = 'Password incorrect';
@@ -319,19 +316,16 @@ class Users extends Controller
                 $this->view('users/login', $data);
             }
         } else {
-            // die("INHEREA");
             redirect('pages/index');
         }
     }
 
     public function createUserSession($user, $role)
     {
-        // die("SESSIONSUCCESS");
-        $_SESSION['user_id'] = $user->Id;
+        $_SESSION['user_id'] = $user->id;
         $_SESSION['user_email'] = $user->Email;
         $_SESSION['user_name'] = $user->Name;
         $_SESSION['user_role'] = $role;
-        // die("SESSIONSUCCESS");
         redirect('pages/index');
     }
 
@@ -342,7 +336,6 @@ class Users extends Controller
         unset($_SESSION['user_name']);
         unset($_SESSION['user_role']);
         session_destroy();
-        // die("LOGOUT");
         redirect('users/login');
     }
 

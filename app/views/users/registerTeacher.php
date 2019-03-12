@@ -25,12 +25,12 @@
             <input type="password" name="confirm_password" class="form-control form-control-lg <?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['confirm_password']; ?>">
             <span class="invalid-feedback"><?php echo $data['confirm_password_err']; ?></span>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label>Image</label>
           </div>
           <div class="form-group">
             <label>Certificates</label>
-          </div>
+          </div> -->
           <div class="row">
             <div class="col">
               <input type="submit" value="Register" class="btn btn-success btn-block">

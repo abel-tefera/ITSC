@@ -22,3 +22,13 @@ function flash($name = '', $message = '', $class = 'alert alert-success')
         }
     }
 }
+function logoutAdmin()
+{
+    unset($_SESSION['user_id']);
+    unset($_SESSION['user_email']);
+    unset($_SESSION['user_name']);
+    unset($_SESSION['user_role']);
+    session_destroy();
+    flash('register_success', 'You have successfully updated your own account. Please log in again.');
+    redirect('users/login');
+}

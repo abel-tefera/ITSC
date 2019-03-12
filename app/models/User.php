@@ -111,4 +111,36 @@ class User
         }
         return array(false);
     }
+
+    public function editStudent($data){
+        $this->db->query('UPDATE students SET Name = :name, Email = :email, MobileTel = :mobile_tel, OfficeTel = :office_tel, Organization = :organization, JobTitle = :job_title, POBOX = :pobox WHERE id = :id');
+        $this->db->bind(':id', $data['id']);
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':mobile_tel', $data['mobile_tel']);
+        $this->db->bind(':office_tel', $data['office_tel']);
+        $this->db->bind(':organization', $data['organization']);
+        $this->db->bind(':job_title', $data['job_title']);
+        $this->db->bind(':pobox', $data['pobox']);
+
+        return $this->db->execute();
+    }
+
+    public function editTeacher($data){
+        // $this->db->query('UPDATE teachers SET Name = :name, Email = :email, Certificates = :certificates WHERE id = :id');
+        $this->db->query('UPDATE teachers SET Name = :name, Email = :email WHERE id = :id');
+        $this->db->bind(':id', $data['id']);
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':email', $data['email']);
+        return $this->db->execute();
+    }
+
+    public function editAdmin($data){
+        $this->db->query('UPDATE admins SET Name = :name, Email = :email WHERE id = :id');
+        $this->db->bind(':id', $data['id']);
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':email', $data['email']); 
+        return $this->db->execute();
+    }
+
 }
