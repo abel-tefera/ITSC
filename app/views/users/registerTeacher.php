@@ -4,7 +4,7 @@
       <div class="card card-body bg-light mt-5">
         <h2>Register Teacher</h2>
         <p>Please fill out this form to register a teacher</p>
-        <form action="<?php echo URLROOT; ?>/users/registerTeacher" method="post">
+        <form action="<?php echo URLROOT; ?>/users/registerTeacher" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="name">Name: <sup>*</sup></label>
             <input type="text" name="name" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">
@@ -25,13 +25,10 @@
             <input type="password" name="confirm_password" class="form-control form-control-lg <?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['confirm_password']; ?>">
             <span class="invalid-feedback"><?php echo $data['confirm_password_err']; ?></span>
           </div>
-          <!-- <div class="form-group"> -->
-            <!-- <label for="imageUpload">Image:</label> -->
-            <!-- <form action="<?php echo URLROOT; ?>/users/upload" method="post" enctype="multipart/form-data"> -->
-            <!-- <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Upload Image" name="submit"> -->
-            <!-- </form> -->
-          <!-- </div> -->
+          <div class="form-group">
+            <label for="imageUpload">Image:</label>
+            <input type="file" name="fileToUpload" id="fileToUpload">
+          </div>
            <!--<div class="form-group">
             <label>Certificates</label>
           </div> -->

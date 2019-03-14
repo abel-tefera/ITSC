@@ -5,7 +5,7 @@
         <h2>Register Student</h2>
         <p>Please fill out this form to register the student</p>
         <!-- <form action="<?php echo URLROOT; ?>/users/registerStudent" method="post" enctype="multipart/form-data"> -->
-        <form action="<?php echo URLROOT; ?>/users/registerStudent" method="post">
+        <form action="<?php echo URLROOT; ?>/users/registerStudent" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="name">Name: <sup>*</sup></label>
             <input type="text" name="name" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">
@@ -46,6 +46,10 @@
           <div class="form-group">
             <label for="pobox">P.O. Box:</label>
             <input type="text" name="pobox" class="form-control form-control-lg" value="<?php echo $data['pobox']; ?>">
+          </div>
+          <div class="form-group">
+            <label for="imageUpload">Image:</label>
+            <input type="file" name="fileToUpload" id="fileToUpload">
           </div>
           <!-- <div class="form-group">
             <label for="imageUpload">Image:</label>

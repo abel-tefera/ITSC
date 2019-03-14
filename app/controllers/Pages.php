@@ -57,8 +57,8 @@ class Pages extends Controller
                         flash('add_success', 'You have successfully added the certificate');
                         redirect('pages/index');
                     } else {
-                        die('Something went wrong');
-                    }
+                        flash('info', 'Something went wrong', 'alert alert-danger');
+                        redirect('pages/index');                    }
                 } else {
                     $this->view('pages/certificates', $data);
                 }
@@ -102,11 +102,18 @@ class Pages extends Controller
 
                 if (empty($data['name_err']) && empty($data['description_err'])) {
                     if ($this->Model->add_course($data)) {
-                        flash('add_success', 'You have successfully added the course');
+                        // flash('info', 'You have successfully added the course');
+                        $ret = upload(null, $data['name']);
+                        if ($ret[0] == 0){
+                            flash('info', $ret[1]. ' Course has been registered');
+                        }else{
+                            $this->Model->uploadImage('Course', $ret[2], $data['name']);
+                            flash('info', 'You have successfully added the course');
+                        }
                         redirect('pages/index');
                     } else {
-                        die('Something went wrong');
-                    }
+                        flash('info', 'Something went wrong', 'alert alert-danger');
+                        redirect('pages/index');                    }
                 } else {
                     $this->view('pages/courses', $data);
                 }

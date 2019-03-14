@@ -87,10 +87,20 @@ class Updates extends Controller
 
                 if (empty($data['name_err']) && empty($data['description_err'])) {
                     if ($this->contentModel->editCourse($data)) {
-                        flash('info', 'You have successfully updated the course\'s data');
+                        // flash('info', 'You have successfully updated the course\'s data');
+                        // redirect('pages/view_courses');
+                        $ret = upload(null, $data['name']);
+                        if ($ret[0] == 0){
+                            flash('info', $ret[1]. ' Courses\' data updated');
+                        }else{
+                            $this->contentModel->uploadImage('Course', $ret[2], $data['email']);
+                            flash('info', 'You have succesfully updated the course\'s data');
+                        }
                         redirect('pages/view_courses');
                     } else {
-                        die('Something went wrong');
+                        flash('info', 'Something went wrong', 'alert alert-danger');
+                        redirect('pages/view_courses');
+                        // die('Something went wrong');
                     }
                 } else {
                     $this->view('pages/editCourses', $data);
@@ -142,11 +152,17 @@ class Updates extends Controller
 
                 if (empty($data['email_err']) && empty($data['name_err'])) {
                     if ($this->userModel->editTeacher($data)) {
-                        flash('info', 'You have successfully updated the teacher\'s data');
+                        $ret = upload($data['email'], null);
+                        if ($ret[0] == 0){
+                            flash('info', $ret[1]. ' Teacher\'s data updated');
+                        }else{
+                            $this->contentModel->uploadImage('Teacher', $ret[2], $data['email']);
+                            flash('info', 'You have successfully updated the teacher\'s data');
+                        }
                         redirect('pages/view_teachers');
                     } else {
-                        die('Something went wrong');
-                    }
+                        flash('info', 'Something went wrong', 'alert alert-danger');
+                        redirect('pages/view_teachers');                      }
 
                 } else {
                     $this->view('users/editTeacher', $data);
@@ -269,10 +285,17 @@ class Updates extends Controller
 
                     if ($this->userModel->editStudent($data)) {
                         // $this->uploadImage();
-                        flash('info', 'You have succesfully updated the student\'s data');
+                        $ret = upload($data['email'], null);
+                        if ($ret[0] == 0){
+                            flash('info', $ret[1]. ' Student\'s data updated');
+                        }else{
+                            $this->contentModel->uploadImage('Student', $ret[2], $data['email']);
+                            flash('info', 'You have succesfully updated the student\'s data');
+                        }
                         redirect('pages/view_students');
                     } else {
-                        die('Something went wrong');
+                        flash('info', 'Something went wrong', 'alert alert-danger');
+                        redirect('pages/view_students');
                     }
 
                 } else {

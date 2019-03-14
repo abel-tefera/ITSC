@@ -63,6 +63,19 @@ class Content
         return $result;
     }
     
+    public function uploadImage($entity, $dir, $id){
+        if ($entity == 'Teacher'){
+            $this->db->query('UPDATE teachers SET image_directory = :dir WHERE Email = :id');
+        }else if($entity == 'Student'){
+            $this->db->query('UPDATE students SET image_directory = :dir WHERE Email = :id'); 
+        }else if ($entity == 'Course'){
+            $this->db->query('UPDATE courses SET image_directory = :dir WHERE Name = :id'); 
+        }
+        $this->db->bind(':id', $id);
+        $this->db->bind(':dir', $dir);
+        return $this->db->execute();
+    }
+
     public function editCertificate($data){
         $this->db->query('UPDATE certificates SET Name = :name, Vendor = :vendor, Description = :description WHERE id = :id');
         $this->db->bind(':id', $data['id']);
