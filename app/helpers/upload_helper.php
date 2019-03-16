@@ -4,11 +4,14 @@ function upload($email = null, $name = null)
         $target_dir = MAINROOT . "\public\img\\";
         $ext = explode(".", basename($_FILES["fileToUpload"]["name"]));
         if(null !== $email){
-            $id = explode(".", $email);  
-            $target_file = $target_dir.$id[0].'com'.'.'.$ext[1];
+            $id = explode(".", $email); 
+            $fileName = $id[0].'com'.'.'.$ext[1]; 
+            $target_file = $target_dir.$fileName;
         }else if(null !== $name){
-            $target_file = $target_dir.$name.'.'.$ext[1];
+            $fileName = $name.'.'.$ext[1];
+            $target_file = $target_dir.$fileName;
         }
+        // die($fileName);
         // mkdir(MAINROOT . "\public\img\\".$email);
 
         // $target_file = $target_dir . $email;
@@ -43,7 +46,7 @@ function upload($email = null, $name = null)
             return array($uploadOk, "Sorry, your file was not uploaded.");
         } else {
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                return array($uploadOk, "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.", $target_file);
+                return array($uploadOk, "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.", $fileName);
             } else {
                 return array(0, "Sorry, there was an error uploading your file.");
             }

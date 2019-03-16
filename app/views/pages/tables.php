@@ -11,7 +11,11 @@ $countB = 0;?>
     <?php foreach ($data['fields'] as $field): ?>
         <th scope="col">
         <?php if ($field != 'password' && $field != 'id' && $field != 'image_directory') {
-    echo $field;
+          if($field != 'Duration'){
+            echo $field;
+          }else{
+            echo $field.' (days)';
+          }
     // echo $countA;
     array_push($arr, $countA);
     $countA += 1;

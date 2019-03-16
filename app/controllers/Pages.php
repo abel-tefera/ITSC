@@ -90,6 +90,8 @@ class Pages extends Controller
                     'name_err' => '',
                     'description' => trim($_POST['description']),
                     'description_err' => '',
+                    'duration' => trim($_POST['duration']),
+                    'duration_err' => ''
                 ];
 
                 if (empty($data['name'])) {
@@ -100,7 +102,11 @@ class Pages extends Controller
                     $data['description_err'] = 'Please enter description for the course';
                 }
 
-                if (empty($data['name_err']) && empty($data['description_err'])) {
+                if (empty($data['duration'])) {
+                    $data['duration_err'] = 'Please enter duration of the course';
+                }
+
+                if (empty($data['name_err']) && empty($data['description_err']) && empty($data['duration_err'])) {
                     if ($this->Model->add_course($data)) {
                         // flash('info', 'You have successfully added the course');
                         $ret = upload(null, $data['name']);

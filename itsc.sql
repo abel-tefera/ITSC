@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2019 at 01:12 PM
+-- Generation Time: Mar 16, 2019 at 12:58 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -40,7 +40,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `Name`, `Email`, `password`) VALUES
-(1, 'itsc Stafff', 'itscstaff@gmail.com', '$2y$10$XG2.Gbt5l2aoXJ1Ye.J4U.p7C1oMqvqKA.JyKaORm3f9flrjzdNEy');
+(1, 'I.T.S.C Staff', 'itscstaff@gmail.com', '$2y$10$XG2.Gbt5l2aoXJ1Ye.J4U.p7C1oMqvqKA.JyKaORm3f9flrjzdNEy');
 
 -- --------------------------------------------------------
 
@@ -85,19 +85,22 @@ INSERT INTO `certificates` (`id`, `Name`, `Vendor`, `Description`) VALUES
 CREATE TABLE `courses` (
   `id` int(11) NOT NULL,
   `Name` varchar(255) DEFAULT NULL,
-  `Description` varchar(255) NOT NULL
+  `Description` varchar(255) NOT NULL,
+  `Duration` smallint(6) NOT NULL,
+  `image_directory` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`id`, `Name`, `Description`) VALUES
-(5, 'Software Engineering I', 'Software modelling and analysis'),
-(9, 'Object-Oriented Programming I', 'This is a beginner course for OOP in Java.'),
-(10, 'Data Structures and Algorithms', 'Stacks, queues, linked lists...'),
-(11, 'Fundamentals of Networking', 'Entry level networking course'),
-(12, 'Data Science', 'Data science with R/Python');
+INSERT INTO `courses` (`id`, `Name`, `Description`, `Duration`, `image_directory`) VALUES
+(5, 'Software Engineering I', 'Software modelling and analysis', 250, 'Software Engineering I.png'),
+(9, 'Object-Oriented Programming I', 'This is a beginner course for OOP in Java.', 125, NULL),
+(10, 'Data Structures and Algorithms', 'Stacks, queues, linked lists...', 40, NULL),
+(11, 'Fundamentals of Networking', 'Entry level networking course', 110, NULL),
+(12, 'Data Science', 'Data science with R/Python', 30, NULL),
+(13, 'Mobile Programming I', 'Beginner android course', 60, NULL);
 
 -- --------------------------------------------------------
 
@@ -148,8 +151,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `Name`, `Email`, `password`, `MobileTel`, `OfficeTel`, `Organization`, `JobTitle`, `POBox`, `image_directory`) VALUES
-(8, 'Abel T. Belay', 'abeltefera16@gmail.com', '$2y$10$WBLgml9Vbp0OPCvlLolKmOvxGk4ge/o6oNNV/wtITKqIMqw4/Xol6', '923942288', '', 'AAiT', 'Student', '', NULL),
-(10, 'New Stud', 'newstud@gmail.com', '$2y$10$OJ54ADTPhjMPF88lcpJRQ.FuvCsCqhkkRZkr7rq.Qu4e9uQNVvETu', '875', '', '', '', '', NULL);
+(8, 'Abel T. Belay', 'abeltefera16@gmail.com', '$2y$10$WBLgml9Vbp0OPCvlLolKmOvxGk4ge/o6oNNV/wtITKqIMqw4/Xol6', '923942288', '', 'AAiT', 'Student', '', 'C:\\xampp\\htdocs\\itsc\\public\\img\\7.png'),
+(9, 'Bereket Yohaness', 'bekijohn@gmail.com', '$2y$10$nOEAjawQHzMjE3ZhRdG1mOXYP2FMXg6z/./4FPU2lvmfKjyu5W5IK', '911223344', '', 'Addis Ababa University', 'Student', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -171,7 +174,7 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`id`, `Name`, `password`, `Email`, `Certificates`, `image_directory`) VALUES
-(1, 'Molalegne', '$2y$10$CckHs5UtGJ7hO.Lqfo3TNeUF6eBwV0Vj2XfmziJa39JU0X0UfAHf2', 'molbill@gmail.com', NULL, NULL);
+(1, 'Molalgne', '$2y$10$CckHs5UtGJ7hO.Lqfo3TNeUF6eBwV0Vj2XfmziJa39JU0X0UfAHf2', 'molbill@gmail.com', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -241,7 +244,7 @@ ALTER TABLE `teachers`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `attendance`
@@ -271,13 +274,13 @@ ALTER TABLE `studentcourses`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

@@ -22,9 +22,10 @@ class Content
     }
 
     public function add_course($data){
-        $this->db->query('INSERT INTO courses (Name, Description) VALUE(:name, :description)');
+        $this->db->query('INSERT INTO courses (Name, Description, Duration) VALUE(:name, :description, :duration)');
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':description', $data['description']);
+        $this->db->bind(':duration', $data['duration']);
 
         if ($this->db->execute()) {
             return true;
@@ -86,10 +87,11 @@ class Content
     }
 
     public function editCourse($data){
-        $this->db->query('UPDATE courses SET Name = :name, Description = :description WHERE id = :id');
+        $this->db->query('UPDATE courses SET Name = :name, Description = :description, Duration = :duration WHERE id = :id');
         $this->db->bind(':id', $data['id']);
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':description', $data['description']);
+        $this->db->bind(':duration', $data['duration']);
         return $this->db->execute();
     }
 

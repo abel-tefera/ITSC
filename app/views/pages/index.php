@@ -10,9 +10,8 @@
     <div class="card-columns">
       <?php foreach ($data['rows'] as $result):?>
           <div class="card" style="margin: 25px;">
-            <!-- <img src="/<?php echo $result['image_directory']?>" class="card-img-top" alt="Image not found"/> -->
             <img src="https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/05/Wyvern-programming-languages-in-one.jpg" class="card-img-top" alt="Image not found"/>
-            <!-- <img src="file:///C:/xampp/htdocs/itsc/public/img/DLD.png" class="card-img-top" alt="Image not found"/> -->
+            <!-- <img src="<?php echo URLROOT.'/img/'.$result['image_directory']; ?>" class="card-img-top" alt="Image not found"/> -->
             <div class="card-body">
               <h5 class="card-title"><?php echo $result['Name']?></h5>
               <p class="card-text"><?php echo $result['Description']?></p>

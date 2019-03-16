@@ -75,6 +75,8 @@ class Updates extends Controller
                     'name_err' => '',
                     'description' => trim($_POST['description']),
                     'description_err' => '',
+                    'duration' => trim($_POST['duration']),
+                    'duration_err' => ''
                 ];
 
                 if (empty($data['name'])) {
@@ -85,7 +87,12 @@ class Updates extends Controller
                     $data['description_err'] = 'Please enter description for the course';
                 }
 
-                if (empty($data['name_err']) && empty($data['description_err'])) {
+                
+                if (empty($data['duration'])) {
+                    $data['duration_err'] = 'Please enter duration of the course';
+                }
+                
+                if (empty($data['name_err']) && empty($data['description_err']) && empty($data['duration_err'])) {
                     if ($this->contentModel->editCourse($data)) {
                         // flash('info', 'You have successfully updated the course\'s data');
                         // redirect('pages/view_courses');
@@ -93,7 +100,7 @@ class Updates extends Controller
                         if ($ret[0] == 0){
                             flash('info', $ret[1]. ' Courses\' data updated');
                         }else{
-                            $this->contentModel->uploadImage('Course', $ret[2], $data['email']);
+                            $this->contentModel->uploadImage('Course', $ret[2], $data['name']);
                             flash('info', 'You have succesfully updated the course\'s data');
                         }
                         redirect('pages/view_courses');

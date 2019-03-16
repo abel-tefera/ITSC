@@ -13,7 +13,12 @@
           <div class="form-group">
             <label for="description">Description: <sup>*</sup></label>
             <input type="text" name="description" class="form-control form-control-lg <?php echo (!empty($data['description_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['description']; ?>">
-            <span class="invalid-feedback"><?php echo $data['name_err']; ?></span>
+            <span class="invalid-feedback"><?php echo $data['description_err']; ?></span>
+          </div>
+          <div class="form-group">
+            <label for="duration">Duration: <sup>*</sup></label>
+            <input type="number" name="duration" class="form-control form-control-lg <?php echo (!empty($data['duration_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['duration']; ?>">
+            <span class="invalid-feedback"><?php echo $data['duration_err']; ?></span>
           </div>
           <div class="form-group">
             <label for="imageUpload">Image:</label>
