@@ -5,6 +5,8 @@ Make sure you import the sql file and update parameters in the ./app/config/conf
 Admin credentials: 
 itscstaff@gmail.com, itsc123
 
-For Nati: 
-Name : Abel Tefera
-ID : ATR/0209/09
+For Nati:
+
+  Name : Abel Tefera
+
+  ID : ATR/0209/09
