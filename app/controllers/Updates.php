@@ -120,6 +120,8 @@ class Updates extends Controller
                     'name_err' => '',
                     'description' => $course->Description,
                     'description_err' => '',
+                    'duration' => $course->Duration,
+                    'duration_err' => ''
                 ];
 
                 $this->view('pages/editCourse', $data);
